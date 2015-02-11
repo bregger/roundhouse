@@ -298,10 +298,10 @@ namespace roundhouse.console
                      option => configuration.DisableTokenReplacement = option != null)
                 //recorders
                 .Add("baseline",
-                     "Baseline - This instructs RH to create an insert for its recording tables, but not to actually run anything against the database. Use this option if you already have scripts that have been run through other means (and BEFORE you start the new ones).",
+                     "Baseline - NOT YET IMPLEMENTED: This instructs RH to create an insert for its recording tables, but not to actually run anything against the database. Use this option if you already have scripts that have been run through other means (and BEFORE you start the new ones).",
                      option => configuration.Baseline = option != null)
                 .Add("dryrun",
-                     "DryRun - This instructs RH to log what would have run, but not to actually run anything against the database. Use this option if you are trying to figure out what RH is going to do.",
+                     "DryRun - NOT YET IMPLEMENTED: This instructs RH to log what would have run, but not to actually run anything against the database. Use this option if you are trying to figure out what RH is going to do.",
                      option => configuration.DryRun = option != null)
                 .Add("searchallinsteadoftraverse=|searchallsubdirectoriesinsteadoftraverse=",
                      "SearchAllSubdirectoriesInsteadOfTraverse - Each Migration folder's subdirectories are traversed by default. This option pulls back scripts from the main directory and all subdirectories at once. Defaults to 'false'",
@@ -367,6 +367,16 @@ namespace roundhouse.console
                 show_help(
                     "If you set Restore to true, you must specify a location for the database to be restored from (RestoreFromPath /restorefrompath).",
                     option_set);
+            }
+
+            if (configuration.DryRun)
+            {
+                show_help("Error: the /dryrun option is not yet implemented.", option_set);
+            }
+
+            if (configuration.Baseline)
+            {
+                show_help("Error: the /baseline option is not yet implemented.", option_set);		        
             }
         }
 
